@@ -7,8 +7,17 @@
 		- Receives messages from the gateway
 		- MQTT server for weather station data (weather station doesn't work with LoRaWAN)
 	- NodeRuby: custom API written in JavaScript
-		- Formats the data received from the sensor boards (from The Things Network via the MQTT protocol) & from Mosquitto (listens for weather station data via MQTT)
-		- Sends the data to InfluxDB
+		- Contains a form used to register new devices
+		- Contains query-builder that can be used in future iterations
+	- SensorMeasurements: JavaScript application for the sensor
+		- Listens to the MQTT server for the sensors and formats the data
+		- Sends the formatted data to the database
+	- MetadataMeasurements: JavaScript application for the gateway
+		- Subscribes to the MQTT channel where the gateway sends it metadata
+		- Sends that metadata to the database for monitoring
+	- WeatherStationMeasurements: JavaScript application for the weather station
+		- Subscribes to the MQTT channel where the weather station sends its measurements
+		- Sends the data to the database.
 	- Nginx: acts as a reverse proxy for the website and the API
 	- Grafana: open source web application for analytics and interactive visualization
 		- Visualize weather data on a website

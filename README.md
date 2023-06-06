@@ -2,5 +2,6 @@
 
 ## Backend
 
-- [Infrastructure](./doc/backend/infrastructure.md)
-- [Installation via Ansible](./doc/backend/)
+- [Infrastructure](./backend/infrastructure.md)
+- [Installation via Ansible](./backend/ansible.md)
+- [Influxdb](./backend/influxdb.md)

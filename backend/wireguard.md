@@ -198,11 +198,11 @@ SaveConfig = true
 
 [Peer]
 PublicKey = <public client 1 key>
-AllowedIPs = {10.10.10.2/32
+AllowedIPs = 10.10.10.2/32
 
 [Peer]
 PublicKey = <public client 2 key>
-AllowedIPs = {10.10.10.3/32
+AllowedIPs = 10.10.10.3/32
 ```
 The template configuration files can be found in the '**/ansible/roles/files**' folder
 

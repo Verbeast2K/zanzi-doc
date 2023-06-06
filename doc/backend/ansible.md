@@ -78,7 +78,7 @@ $ tree -L 4
         └── entrypoint-custom.sh
 ```
 
-## 2. Install Process
+## 2. Some background on Ansible and Docker
 
 - In [backend.md](./backend.md) you can read more about the applications that make up the backend, this part will go in detail about the installation and configuration of the server
 - There is an Ansible playbook for configuring the server, which can be run with `ansible-playbook -K -i ansible.cfg FLWSB-backend-ansible.yaml`
@@ -199,10 +199,16 @@ services:
 
 > Note: There is no need to run `docker compose up -d` after running the Ansible playbook, since there is a task that does that
 
-## 3. End result
+## 3. Configuration
 
-todo
-
-## 4. Things that can go wrong
-
-todo
+- **Before running the playbook**, make sure to do the following:
+    - Copy `.env.default` to `.env` (`cp .env.default .env`) and modify the set the usernames & passwords. You can find the credentials for The Things Network (TTN) on their website.
+    - Copy `hosts.default` to `hosts`
+        - `IP`: IP address of the server
+        - `user`: a user on the server that is in the `sudoers` file
+        - `email`: the e-mail address with which the certificate for the domain should be signed
+    - In the playbook, under `vars` (line 7 & 8), change the domains to 2 domains that you own
+        - Make sure to also change these domains in the `src/nginx/nginx.conf` file, lines 3, 9, 11, 12, 29, 31 & 32
+- If the playbook ran successfully, everything should be up and running just like you configured it.
+    - You can check the status of all the Docker containers on the server: `docker ps -a`
+    - The Grafana dashboard should be accessible on the URL you configured (make sure to correctly set your DNS record(s) to point to the IP address of the server)

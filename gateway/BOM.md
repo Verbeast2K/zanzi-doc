@@ -20,7 +20,7 @@ The gateway board uses a [CM4-POE-UPS-BASE KIT](https://www.waveshare.com/wiki/C
 
 ### Adapter Board
 
-- [PCB design](https://github.com/OpenIotNetwork/ic880a-adapter-raspberry)
+- [PCB design by Jurgen Van Peteghem](https://github.com/JurgenVanpeteghem/ic880a-adapter-raspberry-master)
 - 1 pc of 1x20 pinheader
 - 1 pc of 2x20 pinheader
 - 2 pcs of 1x3 pinheader

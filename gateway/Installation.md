@@ -25,7 +25,7 @@ If not sure look on the wiki site of this board [CM4-POE-UPS-BASE - Waveshare Wi
 To flash an os on the board we use [Rpiboot](https://www.waveshare.com/w/upload/f/f3/Rpiboot_setup.zip) from waveshare. After downloading, unzipping and installing this program you can plug a usb cable from your computer to the rapsberry pi board. Then you switch the slider to power the board. After this you run Rpiboot. We then proceed using the Raspberry Pi Imager which can be downloaded from the official raspberry pi site: [https://www.raspberrypi.com/software/](https://www.raspberrypi.com/software/). The project is made for the following OS choice: Raspberry Pi OS Lite (64-bit). You know select the compute module and click on the settings icon in the down right corner, here we set a hostname, enable SSH and change the user credentials.
 Next you click on write and wait until it is finished. When its finished you can unplug the usb-c connection and power it off. Then you turn the boot switch back to its original position.
 
-Now we need top put the pi on a wired network with DHCP so it automaticly gets an ip address.
+Now we need to put the pi on a wired network with DHCP so it automaticly gets an ip address.
 It is advisee to setup this ip staticly on the first ssh session.
 
 After these settings your Raspberry pi compute board should have a working base setup and should work when powered by POE.
@@ -49,7 +49,7 @@ Ensure the following files are on the ansible host:
 - hosts - contains the rapsberry pi connection details
 - gateway.yml - playbook that configures the host
 
-Change the host connection details in the hosts file and set list of Github in the gateway.yml file under the vars: usernames to the user handles of the users you would like to give access over ssh. You add a ssh key to github refer to the official documentation  ([Adding a new SSH key to your GitHub account - GitHub Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)). Make sure you add the SSH key of you're Linux machine and of all the machines you want to acces the gateway with.
+Change the host connection details in the hosts file and set list of Github usernames in the gateway.yml file under the vars: usernames to the user handles of the users you would like to give access over ssh. To add a ssh key to github refer to the official documentation  ([Adding a new SSH key to your GitHub account - GitHub Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)). Make sure you add the SSH key of your Linux machine and of all the machines you want to acces the gateway with.
 Now you can run the playbook from ansible host with the next command: 
 ```shell
 ansible-playbook gateway.yml

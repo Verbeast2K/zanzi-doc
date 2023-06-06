@@ -9,5 +9,6 @@
 	- NodeRuby: custom API written in JavaScript
 		- Formats the data received from the sensor boards (from The Things Network via the MQTT protocol) & from Mosquitto (listens for weather station data via MQTT)
 		- Sends the data to InfluxDB
+	- Nginx: acts as a reverse proxy for the website and the API
 	- Grafana: open source web application for analytics and interactive visualization
 		- Visualize weather data on a website

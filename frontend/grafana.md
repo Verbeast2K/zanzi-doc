@@ -58,3 +58,104 @@ The dashboard also needs a title, so the full JSON of a Grafana dashboard would 
 ```
 
 Note that this JSON uses a datasource called "InfluxDB", this needs to be created in the management console. The fieldConfig and targets also contain more information, but adding a working fieldConfig and targets would be too much for a simple example.
+
+## Add dashboards to Grafana
+
+Adding a dashboard to Grafana can easily be done via the API. You'll need 2 things for this: the domain name and the API key. You can create an API key under `settings > API keys`. Below you can see the basic structure of the Python scripts to upload the dashboard, run it with `python <file.py>`. It will prompt you for a URL and an API key, then it will try to upload the dashboard & print the response. The scripts we used are located in [this git repository](https://github.com/Jappie3/ZanzibarProjectPython).
+
+```python
+import requests
+import json
+
+# Get the URL & API key from the user
+URL = input(
+    "Enter Grafana API URL (e.g. example.com, no protocol or trailing slashes): "
+)
+GRAFANA_API_URL = "https://" + URL + "/api/dashboards/db"
+GRAFANA_API_KEY = input("Enter Grafana API key: ")
+
+# Define  the panels to incluse in the dashboard
+PANELS = [
+    {
+        "title": "Sensor Board Location",
+        "type": "geomap",
+        "query": "",
+        "w": 5,
+        "x": 0,
+        "y": 0,
+        "fieldConfig": {
+            "defaults": {
+                "custom": {
+                    "hideFrom": {
+                        "tooltip": False,
+                        "viz": False,
+                        "legend": False,
+                    }
+                },
+                "mappings": [],
+                "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                        {"color": "green", "value": None},
+                        {"color": "red", "value": 80},
+                    ],
+                },
+                "color": {"mode": "thresholds"},
+            },
+            "overrides": [],
+        },
+    },
+
+    # ...
+
+]
+
+# Define the dashboard JSON structure
+dashboard = {
+    "title": "Sensorboard Dashboard",
+    "panels": [],
+    "editable": False,
+    "hideControls": False,
+    "timezone": "browser",
+    "time": {"from": "now-6h", "to": "now"},
+}
+
+# Add each panel to the dashboard
+for panel in PANELS:
+    panel_data = {
+        "title": panel["title"],
+        "type": panel["type"],
+        "datasource": "InfluxDB_v2_Flux",
+        "gridPos": {"h": 8, "w": panel["w"], "x": panel["x"], "y": panel["y"]},
+        "fieldConfig": panel["fieldConfig"],
+        "targets": [
+            {
+                "query": panel["query"],
+                "refId": "A",
+                "hide": False,
+                "type": panel["type"],
+            },
+        ],
+    }
+
+    dashboard["panels"].append(panel_data)
+
+# Define the payload to send to the Grafana API
+payload = {
+    "dashboard": dashboard,
+    "overwrite": True,
+}
+
+# Send the request to the Grafana API
+response = requests.post(
+    GRAFANA_API_URL,
+    headers={
+        "Authorization": f"Bearer {GRAFANA_API_KEY}",
+        "Content-Type": "application/json",
+    },
+    json=payload,
+)
+
+# Print the response from the Grafana API
+print(response.text)
+```

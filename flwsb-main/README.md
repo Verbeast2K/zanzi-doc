@@ -8,8 +8,8 @@ this project was built upon a previous iteration. You can find the full document
 - In the previous version there was a mistake in the silkscreen. Pin "PA09" had to be "PA07". This mistake was corrected in the new version.
 
 # Changes made to the board
-- Three leds were added to the board. One led will indicate wheter the power supply is active. The other two leds were added on the RX and TX lines of the LoraWan module to indicate data transmission.
-- Another type of voltage regulator was used on the new version. instead of the LD1117S33TR voltage regulator the LDL1117S33R was used in this version. The new voltage regulator has a wider range of input voltages and has a lower quiescent current.
+- Three leds were added to the board. One led will indicate whether the power supply is active. The other two leds were added on the RX and TX lines of the LoraWan module to indicate data transmission.
+- Another type of voltage regulator was used on the new version. Instead of the LD1117S33TR voltage regulator the LDL1117S33R was used in this version. The new voltage regulator has a wider range of input voltages and has a lower quiescent current.
 
 # New schematic
 ![FLWSB](assets/FLWSB-SAMDaaNo21.svg 'Figuur 1: New schematic of the FLWSB')

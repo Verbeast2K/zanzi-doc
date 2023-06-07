@@ -1,0 +1,23 @@
+# Backend infrastructure
+
+- The backend for the FLWSB project consists of the following applications:
+	- Influxdb: open source time series database
+		- Used to store data gathered by the sensors & weather station
+	- Mosquitto: open source server implementation of the MQTT protocol
+		- Receives messages from the gateway
+		- MQTT server for weather station data (weather station doesn't work with LoRaWAN)
+	- NodeRuby: custom API written in JavaScript
+		- Contains a form used to register new devices
+		- Contains query-builder that can be used in future iterations
+	- SensorMeasurements: JavaScript application for the sensor
+		- Listens to the MQTT server for the sensors and formats the data
+		- Sends the formatted data to the database
+	- MetadataMeasurements: JavaScript application for the gateway
+		- Subscribes to the MQTT channel where the gateway sends it metadata
+		- Sends that metadata to the database for monitoring
+	- WeatherStationMeasurements: JavaScript application for the weather station
+		- Subscribes to the MQTT channel where the weather station sends its measurements
+		- Sends the data to the database.
+	- Nginx: acts as a reverse proxy for the website and the API
+	- Grafana: open source web application for analytics and interactive visualization
+		- Visualize weather data on a website

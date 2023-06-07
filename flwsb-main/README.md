@@ -14,11 +14,19 @@ this project was built upon a previous iteration. You can find the full document
 # New schematic
 ![FLWSB](assets/FLWSB-SAMDaaNo21.svg 'Figuur 1: New schematic of the FLWSB')
 
+In the schematic, you can see the new power supply led in the voltage regulator section.
+
+![FLWSB](assets/powersupply.jpg 'Figuur 2: New power supply led')
+
+You can also see the two added lora transmission LEDs.
+
+![FLWSB](assets/LoraLeds.jpg 'Figuur 3: LoRa transmission LEDs')
+
 # PCB
 This is the PCB design from the 3D-view in Kicad. You can see the added power led next to the USB-C connector. The RX and TX LEDs were added on the right side next to the antenna connector.
 
-![FLWSB](assets/FLWSB.png 'Figuur 2: 3D view of the new FLWSB version')
+![FLWSB](assets/FLWSB.png 'Figuur 4: 3D view of the new FLWSB version')
 
 Below you can see the result of the soldered board. This board was fully soldered by hand. To solder the microcontroller, the "drag soldering" technique was used.
 
-![FLWSB](assets/FLWSB_soldered.jpg 'Figuur 3: soldered FLWSB')
+![FLWSB](assets/FLWSB_soldered.jpg 'Figuur 5: soldered FLWSB')

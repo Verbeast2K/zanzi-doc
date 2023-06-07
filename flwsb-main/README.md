@@ -15,6 +15,8 @@ this project was built upon a previous iteration. You can find the full document
 ![FLWSB](assets/FLWSB-SAMDaaNo21.svg 'Figuur 1: New schematic of the FLWSB')
 
 # PCB
+This is the PCB design from the 3D-view in Kicad
 ![FLWSB](assets/FLWSB.png 'Figuur 2: 3D view of the new FLWSB version')
 
+Below you can see the result of the soldered board. This board was fully soldered by hand. To solder the microcontroller, the "drag soldering" technique was used.
 ![FLWSB](assets/FLWSB_soldered.jpg 'Figuur 3: soldered FLWSB')
